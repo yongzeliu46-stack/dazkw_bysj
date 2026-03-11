@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN" xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>名师点睛在线课堂 2026版 - 大庆中考学习网</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script th:src="@{/js/tailwind-config.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white min-h-screen flex flex-col">
+<header class="bg-surface-light dark:bg-surface-dark border-b border-[#e7edf3] dark:border-gray-800 sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20 gap-8">
+<div class="flex items-center gap-3 min-w-fit">
+<div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-text-main dark:text-white hidden md:block">
+                        大庆中考学习网
+                    </h1>
+</div>
+<div class="hidden md:flex flex-1 max-w-md">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-sub">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border-none rounded-lg leading-5 bg-[#e7edf3] dark:bg-gray-800 text-text-main dark:text-gray-200 placeholder-text-sub focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm transition-all" placeholder="搜索名师、课程或知识点..." type="text"/>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+<a class="text-text-main dark:text-gray-300 hover:text-primary font-medium text-sm transition-colors" th:href="@{/index}">首页</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary font-medium text-sm transition-colors" href="#">中考资讯</a>
+<a class="text-primary font-bold text-sm" th:href="@{/expert}">名师点睛</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary font-medium text-sm transition-colors" th:href="@{/resource}">真题下载</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary font-medium text-sm transition-colors" href="#">志愿填报</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex h-10 px-6 items-center justify-center rounded-lg bg-primary hover:bg-primary-dark text-white text-sm font-bold transition-colors">
+                        登录 / 注册
+                    </button>
+<button class="lg:hidden p-2 rounded-md text-text-main hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+<section class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-[#e7edf3] dark:border-gray-800 p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 overflow-x-auto hide-scrollbar pb-2 sm:pb-0">
+<span class="text-sm font-bold text-text-sub whitespace-nowrap">学科分类：</span>
+<div class="flex items-center gap-2">
+<button class="px-4 py-1.5 rounded-full bg-primary text-white text-sm font-medium transition-colors whitespace-nowrap">全部</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">语文</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">数学</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">英语</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">物理</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">化学</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">政治</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">历史</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">生物</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-background-light dark:hover:bg-gray-800 text-text-main dark:text-gray-300 text-sm font-medium transition-colors whitespace-nowrap">地理</button>
+</div>
+</div>
+<div class="h-px bg-[#e7edf3] dark:bg-gray-800 w-full"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-6 text-sm text-text-sub">
+<button class="text-primary font-bold flex items-center gap-1">
+                            综合排序 <span class="material-symbols-outlined text-base">sort</span>
+</button>
+<button class="hover:text-primary transition-colors">最新发布</button>
+<button class="hover:text-primary transition-colors">最多播放</button>
+</div>
+<div class="text-xs text-text-sub">
+                        共找到 <span class="text-primary font-bold">128</span> 个课程视频
+                    </div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-8 xl:col-span-9">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group flex flex-col gap-3 cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJD1-DtEJ1idiPr2Xjs6XeHyIOhjW6CkS0qpdr4SENweQZgbceCbKeVEE_zOUnjRXSSbIzCgUUWifTLEYWFHY0u72KcV16G3jqjxwxpcgka5XzQ-F4secDXCkvd5_BrNGgozPNw5vtCaLaz7Yz0rAWc-yDS4HjT0pS2BXI-5bkcPgNk6kpi6jrfSNQUyE4cG9zncJcuYuImOEQB7FrY6zDIC2xXTJgQs26kYsoadjBvx8fZp6F81yIenBZlkpYXi58m-Jv3zdXVFE");'></div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-xs text-white font-mono">15:30</div>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-main dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-primary transition-colors mb-2">
+                                2026中考数学压轴题突破：二次函数与几何综合大题解析
+                            </h3>
+<div class="flex items-center justify-between text-xs text-text-sub">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBq7AJxHMMsG7iRBiAXSkwu_N5kxjZLpJ4eYo9qHOpJymvWUHROJnKyMNVrh6_BH1ak1lNpsk_MkBZ0LGRlZXcdrXzx7NhE15oyKm_cvxrwsbCsyfN8WKgoKZT0CWrgZeFZsAcIv0GFaZp5UoTnicLZvSVrPu1L8B5h1XwkL9QTVNy27kpa9ui5wxZA2nASLtVTPYXZcGRrhOOSN_0me24uMEFRSTSljKXv3m8b6bq58gKkvGIp6KO0CfTKxSkMsQGuAE9xC1GMzk4");'></div>
+</div>
+<span class="hover:text-primary">王明德</span>
+<span class="text-gray-300 dark:text-gray-700">|</span>
+<span>大庆实验中学</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 text-xs text-text-sub/80">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> 1.2万</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2天前</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col gap-3 cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9i3lfP4ipfFFzaYEsLylLmqsa2TOaGlIn4Vg_-5GAaMbdNaAw9SOSx6QOjTRkrk5JTL21aX-qPofV3UJsJzqrL3OONEv3U6lo89ncE_G-ycQkccqwSmX0xigxqhhC20uSSdaChHNy9khM20U1EDhngl0kt0e5QQk1ok-YP1doyU4mRdURIq3wufXIREd8stnXp8KvSvuSKBLaqG9JeFeJkDvJUbQCAx3sueE261RQbTRNY8T29rVBY0IrutVJEtQJK5ohDnULWC0");'></div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-xs text-white font-mono">45:12</div>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-main dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-primary transition-colors mb-2">
+                                初三英语完形填空满分技巧：逻辑推理与上下文联系
+                            </h3>
+<div class="flex items-center justify-between text-xs text-text-sub">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkKkA5IUMHmPgagSHUSdDHjgs8EoCBBrIvY80vXwa70vrkFP7K9gj4Jd9cR_vBiK6ZIBGLpYZ7LSQ4ipx8Ggra0CixfLVSAFt1OoizCZYTZQ_rKKpRcXwvc5Oz70dmox3Aa1tLYZRsZkSZ9Lfw7JfVXh-u-6B59Vb0iD9AJFgoDxz_M2_TAVwEMRhtsUM38Mza9JgRixG2jnhCQ90bNw1KZ7JBRsD4Bz7CSfwOhFF0LU1wh5OYWHi34fjPjiDoWxjwcTavJFUkALw");'></div>
+</div>
+<span class="hover:text-primary">Sarah Li</span>
+<span class="text-gray-300 dark:text-gray-700">|</span>
+<span>大庆一中</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 text-xs text-text-sub/80">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> 8,532</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 5天前</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col gap-3 cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 bg-indigo-100 flex items-center justify-center text-indigo-300">
+<span class="material-symbols-outlined text-4xl">science</span>
+</div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-xs text-white font-mono">22:05</div>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-main dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-primary transition-colors mb-2">
+                                物理力学重难点解析：浮力与压强的典型模型分析
+                            </h3>
+<div class="flex items-center justify-between text-xs text-text-sub">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgIuRdJUEyr8mzxR-r7w7Ozq5wba4BtvsEygFelvNY6Tr0jZSJmOZ7IVeXePOl271qfUpZJRdO0O8hWD_wgP2GX10u-jAsAZzUubsQ36QMS4e8PWUBlV6Q4NCrW-JyGI9DhPOEsLSjcUhwtXudj-O19liPUJIXSVWE59WlgKCq9OFfxgloHXDUc3Z8eEIBDM_BMofuhxz7oEziDJz_4_S4vYZFqlYw3T17-R3t5FbZcBjoFyW1WOQpag-eVbTyatw1rlGxpS2tSKM");'></div>
+</div>
+<span class="hover:text-primary">赵铁柱</span>
+<span class="text-gray-300 dark:text-gray-700">|</span>
+<span>大庆六十九中</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 text-xs text-text-sub/80">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> 5.6万</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 1周前</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col gap-3 cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 bg-red-100 flex items-center justify-center text-red-300">
+<span class="material-symbols-outlined text-4xl">book_2</span>
+</div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-xs text-white font-mono">30:00</div>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-main dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-primary transition-colors mb-2">
+                                2026中考语文作文预测：热点素材积累与运用
+                            </h3>
+<div class="flex items-center justify-between text-xs text-text-sub">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVbf7OQsE0Fre5A1kKtmFObyhCDgR8ACWowGTIvQj-vb6Cwjl7a8TcnM4bLQzFULjdQwe4wyUjw3nP_7oUruYE9MeREaRNuum03UYWud5ez80CB2jLHGYxjRjSlBw72HoAPlQqRjG_6w-ab1IBAtIZfkNSOm88y3mrg_TKL9s4oVpsUqYfAkEFHhBOkA3N8Za_Saw7jLCwKM91SQcSDj3Tx5gVjzkVEpdTlH8J2zWBSHvDaVPCfFpKtU8k6NYIXMTO0XOoSR-UVFM");'></div>
+</div>
+<span class="hover:text-primary">孙晓云</span>
+<span class="text-gray-300 dark:text-gray-700">|</span>
+<span>东风中学</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 text-xs text-text-sub/80">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> 2.1万</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 1周前</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col gap-3 cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 bg-emerald-100 flex items-center justify-center text-emerald-300">
+<span class="material-symbols-outlined text-4xl">science</span>
+</div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-xs text-white font-mono">18:45</div>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-main dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-primary transition-colors mb-2">
+                                化学酸碱盐专项复习：推断题解题思路与技巧
+                            </h3>
+<div class="flex items-center justify-between text-xs text-text-sub">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARX4cWBklJAquqDVRjVUCpOIBzQRUXDmRt8ehn2pTceOHdZHevNNrQvufv6Bp4ieoQH0QP1hXsG67bWO0PbWq4ez1xevbjMUQ2x04cNMuePwosK5zBjQOn4c7LykS9i0Xl-WIlsWCfP2iemGkyfCqe3HZAoeinSmxRUbv3vzaKSu3Se8YzF4RuCAxFoGc-NV8KdSPk6cmfgC3Nul1OXGq4FLjtMsgtDbRBBboPp9V_bgRnxIJq3FC61xbrZSVf1eFoW3s3USdOdBA");'></div>
+</div>
+<span class="hover:text-primary">周建国</span>
+<span class="text-gray-300 dark:text-gray-700">|</span>
+<span>铁人中学</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 text-xs text-text-sub/80">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> 9,200</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2周前</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col gap-3 cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 bg-amber-100 flex items-center justify-center text-amber-300">
+<span class="material-symbols-outlined text-4xl">history_edu</span>
+</div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 rounded text-xs text-white font-mono">25:10</div>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-main dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-primary transition-colors mb-2">
+                                历史中考冲刺：中国近代史时间轴梳理
+                            </h3>
+<div class="flex items-center justify-between text-xs text-text-sub">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABEvfr--sAYiKPpg_pgR7B6gKH9GuDU8qdaTk2N7Ukv8TISb6cN437OgjkA_q2MQslwQcuGWHlX4DRkHmSSHAqy3c2qeq_nJlzbZYqIkVAiz6H_IQ1juSDRRHU2CvwIVg5jOhrtNl37GdV12Tz9lGEQS5ExTkTUuPWEJLy5NnNUDbhzAqz8LyBInSJGw7-KvbtE1ABCIqIRjH6alvKMQFE33MBsbmdSbRzBAksI8bRQhbY4mCD76MIDgs7sL_R-1vLMVpONQP9y0g");'></div>
+</div>
+<span class="hover:text-primary">吴兰</span>
+<span class="text-gray-300 dark:text-gray-700">|</span>
+<span>大庆四中</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2 text-xs text-text-sub/80">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> 7,450</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2周前</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-10 flex justify-center">
+<nav class="flex items-center gap-2">
+<button class="size-9 flex items-center justify-center rounded-lg border border-[#e7edf3] hover:border-primary hover:text-primary text-text-sub transition-colors" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-sm">1</button>
+<button class="size-9 flex items-center justify-center rounded-lg border border-[#e7edf3] hover:border-primary hover:text-primary text-text-sub transition-colors text-sm font-medium">2</button>
+<button class="size-9 flex items-center justify-center rounded-lg border border-[#e7edf3] hover:border-primary hover:text-primary text-text-sub transition-colors text-sm font-medium">3</button>
+<span class="text-text-sub px-1">...</span>
+<button class="size-9 flex items-center justify-center rounded-lg border border-[#e7edf3] hover:border-primary hover:text-primary text-text-sub transition-colors text-sm font-medium">8</button>
+<button class="size-9 flex items-center justify-center rounded-lg border border-[#e7edf3] hover:border-primary hover:text-primary text-text-sub transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+<div class="lg:col-span-4 xl:col-span-3 space-y-8">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-[#e7edf3] dark:border-gray-800 overflow-hidden">
+<div class="p-4 border-b border-[#e7edf3] dark:border-gray-800 flex justify-between items-center">
+<h4 class="font-bold text-text-main dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">trophy</span> 名师人气榜
+                        </h4>
+<a class="text-xs text-text-sub hover:text-primary" href="#">查看全部</a>
+</div>
+<div class="p-2">
+<ul class="flex flex-col">
+<li class="flex items-center gap-3 p-3 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors cursor-pointer group">
+<span class="flex items-center justify-center size-5 bg-red-100 text-red-600 rounded text-xs font-bold shrink-0">1</span>
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBL4O2WDuSNnEHEPfiZCFdf6WAQd8CRQH35vZev8DRPg-Qo8jIY2e2gALP-_f-w4Mus2wXwkIX6p0GQR_VtUhC9PcRfSk8GWM2OGeBUeL0Dj2LLRGKSl2f7-hUam5Q7rqyz09ffJknJj-f3a7V9912l3cQhRZyQGwKRlX32WVn9R0MXac8BQfwBbwMN0V7CW8zKZt2WDOzGSQYvWaB_sg-e-hVd_dSsi28kxe9CTOcN1evndwHKhMnuClSyX9Hs5JbqsF3Op3ORA-0");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-text-main dark:text-white truncate">王明德</h5>
+<p class="text-xs text-text-sub truncate">大庆实验中学 · 数学</p>
+</div>
+<div class="text-xs font-medium text-primary">9.8w</div>
+</li>
+<li class="flex items-center gap-3 p-3 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors cursor-pointer group">
+<span class="flex items-center justify-center size-5 bg-orange-100 text-orange-600 rounded text-xs font-bold shrink-0">2</span>
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDF6CTpmkWq8VyTu5XLQgcyPpon2k45e6MLpteTjDYwL7piHBTSgkxwSdTHAYZDAIkAEnUix8KFqapdMacF-x9nKSjXumSzvt_a2JCQR98xEGqyl-kZrN6RWSHtbnxGt1t_S-7etK1-UHYkRfDQ_Op5bPJgvqIgu-lCZMi5hnwpulxjqnS3zayFl-hRyguCF1pqtPrttE35rMylfxtB5iGyVkPhAopniRuWotx1jq7OUreYC2CtcriOeuSfBb6HulWN_9UXVekI-Eo");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-text-main dark:text-white truncate">赵铁柱</h5>
+<p class="text-xs text-text-sub truncate">大庆六十九中 · 物理</p>
+</div>
+<div class="text-xs font-medium text-primary">8.5w</div>
+</li>
+<li class="flex items-center gap-3 p-3 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors cursor-pointer group">
+<span class="flex items-center justify-center size-5 bg-yellow-100 text-yellow-600 rounded text-xs font-bold shrink-0">3</span>
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhTQhRWoM-dH2rzzWYZA7oouqsjHdeowainT6mmsdVmPncVVQq5XGqLqsU8iNVYP4yx2P8bJGytGDCRBpnO7Gy2Gmh0j4d8vElTcE0LE5VLJCKg2INmhKEg0oLXd9F98Qa9DRwYA_dQ0tQgTD-PuV0EVfdhh04xDbl_Cm3CNoJlGluGYQOQsMNVbxBBK1LcOEduI82i4vYGK23t3W3oWC0mZ6JXKk-GQjemOIJWf1U-WoEKdn7jd2YS3FGSYKjfbb05rl8M73EsNQ");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-text-main dark:text-white truncate">孙晓云</h5>
+<p class="text-xs text-text-sub truncate">东风中学 · 语文</p>
+</div>
+<div class="text-xs font-medium text-primary">7.2w</div>
+</li>
+<li class="flex items-center gap-3 p-3 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors cursor-pointer group">
+<span class="flex items-center justify-center size-5 text-gray-400 font-bold text-xs shrink-0">4</span>
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDA2Rc_2hBbIO4LcMlqzdON6k5fc_92psV16Oypg6gy0sQvubQFPuBfD1JQt4K5uexqQ8mjLx7it_eTx1aYjAf9y3bmBZFHPOsaAOV41siu2HXdvGcSAr67_De-ZYTBv0oGR_YZOuZp4-qdZdrAnpTbevfXTcJJY0C0LS91zKdVIgJhTxfqNXpDAwPkISpUr03D9SYpyLWoXPqf-ZZsgbNmbWTlMoAgNAPZwblNXg0AJrZ9gF0mV2FjFcINoryWveibrx-t2jbRvbw");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-text-main dark:text-white truncate">Sarah Li</h5>
+<p class="text-xs text-text-sub truncate">大庆一中 · 英语</p>
+</div>
+<div class="text-xs font-medium text-text-sub">6.8w</div>
+</li>
+<li class="flex items-center gap-3 p-3 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors cursor-pointer group">
+<span class="flex items-center justify-center size-5 text-gray-400 font-bold text-xs shrink-0">5</span>
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPwy1oyQGPSgyFhwwT-0jpLPBojYmj5YswhvUKw_DEsmPDJulEloJZxuRiN7YrsK5prT94IJFcFZ5Aa8Pk_Lfhwxg9imGeASvrFqwOYiEJOb_GFgLCGaNMjkG-gUzWFWpOwDswnuTIyaLJoJVVoJJsAmG12HjmYD178WBlEPubcUzUu1j_IiBLVHjt1TsUCNgkWnCfDqkU80belRI1dZJLwGictlAmxqLU3SWIB2Lf64nHlXNh2KFAzonAdQjIG5FvmHATai3SalM");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-text-main dark:text-white truncate">周建国</h5>
+<p class="text-xs text-text-sub truncate">铁人中学 · 化学</p>
+</div>
+<div class="text-xs font-medium text-text-sub">5.4w</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-[#e7edf3] dark:border-gray-800 overflow-hidden">
+<div class="p-4 border-b border-[#e7edf3] dark:border-gray-800 flex justify-between items-center">
+<h4 class="font-bold text-text-main dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-red-500">live_tv</span> 直播预告
+                        </h4>
+</div>
+<div class="p-4 space-y-4">
+<div class="flex gap-3">
+<div class="flex flex-col items-center justify-center bg-primary/10 rounded-lg w-12 h-14 shrink-0 text-primary">
+<span class="text-xs font-bold">4月</span>
+<span class="text-lg font-black leading-none">20</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<h5 class="text-sm font-bold text-text-main dark:text-white line-clamp-2">2026年中考考前心理辅导讲座</h5>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs text-text-sub">19:00 - 20:30</span>
+<button class="text-xs px-2 py-1 bg-primary text-white rounded hover:bg-primary-dark transition-colors">预约</button>
+</div>
+</div>
+</div>
+<div class="h-px bg-gray-100 dark:bg-gray-800 w-full"></div>
+<div class="flex gap-3">
+<div class="flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg w-12 h-14 shrink-0 text-text-sub">
+<span class="text-xs font-bold">4月</span>
+<span class="text-lg font-black leading-none">22</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<h5 class="text-sm font-bold text-text-main dark:text-white line-clamp-2">名师面对面：物理实验操作在线答疑</h5>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs text-text-sub">18:30 - 19:30</span>
+<button class="text-xs px-2 py-1 border border-primary text-primary rounded hover:bg-primary hover:text-white transition-colors">预约</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden shadow-sm group cursor-pointer relative">
+<div class="w-full h-32 bg-gradient-to-r from-primary to-blue-400 flex items-center justify-center text-white">
+<div class="text-center p-4">
+<p class="text-xs opacity-80 uppercase tracking-widest mb-1">Premium Course</p>
+<h3 class="font-bold text-lg">中考冲刺培优班</h3>
+<p class="text-xs mt-1 bg-white/20 inline-block px-2 py-0.5 rounded">限时报名中</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-background-dark text-gray-400 py-12 mt-auto">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 border-b border-gray-800 pb-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-white">
+<span class="material-symbols-outlined">school</span>
+<span class="font-bold text-lg">大庆中考学习网</span>
+</div>
+<p class="text-sm text-gray-500 mb-4">
+                        为大庆地区初三学子提供最权威的中考资讯、最优质的备考资源和最贴心的志愿服务。
+                    </p>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">call</span></a>
+</div>
+</div>
+<div>
+<h5 class="text-white font-bold mb-4">平台服务</h5>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">历年真题</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">志愿填报模拟</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">名师微课</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">查分入口</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-4">友情链接</h5>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">大庆市教育局</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">黑龙江省招生考试信息港</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">大庆实验中学</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">大庆一中</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-4">关注我们</h5>
+<div class="w-24 h-24 bg-white rounded flex items-center justify-center mb-2">
+<div class="w-20 h-20 bg-gray-200" data-alt="QR Code for Wechat Official Account" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9i3lfP4ipfFFzaYEsLylLmqsa2TOaGlIn4Vg_-5GAaMbdNaAw9SOSx6QOjTRkrk5JTL21aX-qPofV3UJsJzqrL3OONEv3U6lo89ncE_G-ycQkccqwSmX0xigxqhhC20uSSdaChHNy9khM20U1EDhngl0kt0e5QQk1ok-YP1doyU4mRdURIq3wufXIREd8stnXp8KvSvuSKBLaqG9JeFeJkDvJUbQCAx3sueE261RQbTRNY8T29rVBY0IrutVJEtQJK5ohDnULWC0"); background-size: cover;'></div>
+</div>
+<p class="text-xs text-gray-500">扫码关注公众号<br/>获取最新考试动态</p>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-4">
+<p>© 2026 大庆中考学习网 版权所有 | 黑ICP备XXXXXXXX号</p>
+<div class="flex gap-4">
+<a class="hover:text-gray-400" href="#">隐私政策</a>
+<a class="hover:text-gray-400" href="#">用户协议</a>
+<a class="hover:text-gray-400" href="#">联系我们</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

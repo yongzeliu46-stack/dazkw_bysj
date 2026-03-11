@@ -1,0 +1,1 @@
+import{s as t}from"./request-2711f864.js";function a(e){return t({url:"/teacher/list",method:"get",params:e})}function u(e){return t({url:"/teacher/add",method:"post",data:e})}function d(e){return t({url:"/teacher/update",method:"put",data:e})}function c(e){return t({url:`/teacher/delete/${e}`,method:"delete"})}export{u as a,c as d,a as g,d as u};

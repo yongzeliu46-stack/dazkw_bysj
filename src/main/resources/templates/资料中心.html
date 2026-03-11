@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN" xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>资料下载中心 - 大庆中考学习网</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script th:src="@{/js/tailwind-config.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-100 antialiased min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="max-w-[1200px] mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white hidden sm:block">大庆中考学习网</h1>
+</div>
+<div class="w-px h-6 bg-slate-300 dark:bg-slate-700 mx-2 hidden md:block"></div>
+<nav class="hidden md:flex gap-6">
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors" th:href="@{/index}">首页</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors" th:href="@{/expert}">名师点睛</a>
+<a class="text-sm font-medium text-primary dark:text-white transition-colors" th:href="@{/resource}">资料库</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors" href="#">交流论坛</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-bold rounded-lg shadow-sm transition-all transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]">cloud_download</span>
+<span>我的下载</span>
+</button>
+<div class="sm:hidden text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1200px] mx-auto px-4 md:px-6 py-6 flex flex-col gap-6">
+<div class="flex flex-col gap-4">
+<nav class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary hover:underline" th:href="@{/index}">首页</a>
+<span class="mx-2">/</span>
+<a class="hover:text-primary hover:underline" th:href="@{/resource}">资料库</a>
+<span class="mx-2">/</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">中考资料下载中心</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">中考资料下载中心</h2>
+<p class="mt-2 text-slate-500 dark:text-slate-400 max-w-2xl">
+                    汇集大庆地区历年中考真题、名校模拟试卷及学霸笔记，助力2026中考高效备考。
+                </p>
+</div>
+<div class="relative w-full md:w-80">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm shadow-sm transition-all placeholder:text-slate-400" placeholder="搜索资料名称，如“2026数学”" type="text"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 items-start">
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-6">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_month</span>
+                        年份筛选
+                    </h3>
+</div>
+<div class="space-y-2">
+<label class="cursor-pointer block group">
+<input checked="" class="filter-checkbox hidden" name="year" type="radio"/>
+<div class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 border border-transparent hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors group-hover:text-primary">
+                            全部年份
+                        </div>
+</label>
+<label class="cursor-pointer block group">
+<input class="filter-checkbox hidden" name="year" type="radio"/>
+<div class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 border border-transparent hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors group-hover:text-primary flex justify-between">
+                            2026年 <span class="bg-red-100 text-red-600 text-[10px] px-1.5 py-0.5 rounded-full">新</span>
+</div>
+</label>
+<label class="cursor-pointer block group">
+<input class="filter-checkbox hidden" name="year" type="radio"/>
+<div class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 border border-transparent hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors group-hover:text-primary">
+                            2025年
+                        </div>
+</label>
+<label class="cursor-pointer block group">
+<input class="filter-checkbox hidden" name="year" type="radio"/>
+<div class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 border border-transparent hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors group-hover:text-primary">
+                            2024年
+                        </div>
+</label>
+<label class="cursor-pointer block group">
+<input class="filter-checkbox hidden" name="year" type="radio"/>
+<div class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 border border-transparent hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors group-hover:text-primary">
+                            2023年及以前
+                        </div>
+</label>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">menu_book</span>
+                        科目分类
+                    </h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold hover:bg-primary hover:text-white transition-colors">全科</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">语文</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">数学</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">英语</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">物理</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">化学</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">政治</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">历史</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">生物</button>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-transparent rounded-full text-xs font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">地理</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">category</span>
+                        资料类型
+                    </h3>
+</div>
+<div class="space-y-3">
+<label class="flex items-center space-x-3 cursor-pointer">
+<input checked="" class="form-checkbox h-4 w-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-200">真题试卷</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer">
+<input checked="" class="form-checkbox h-4 w-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-200">模拟试题</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer">
+<input class="form-checkbox h-4 w-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-200">学霸笔记</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer">
+<input class="form-checkbox h-4 w-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-200">复习提纲</span>
+</label>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col gap-4 w-full">
+<div class="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-700">
+<div class="text-sm text-slate-500 dark:text-slate-400">
+                    共找到 <span class="font-bold text-primary">128</span> 份相关资料
+                </div>
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-500 dark:text-slate-400">排序：</span>
+<select class="bg-transparent border-none text-slate-700 dark:text-slate-200 font-medium focus:ring-0 cursor-pointer pr-8 py-0">
+<option>综合排序</option>
+<option>最新上传</option>
+<option>下载最多</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md hover:border-primary/50 transition-all duration-200 flex flex-col sm:flex-row gap-4 sm:items-center">
+<div class="flex-shrink-0 w-12 h-12 bg-red-50 dark:bg-red-900/20 rounded-lg flex items-center justify-center text-red-500">
+<span class="material-symbols-outlined text-[32px]">picture_as_pdf</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                2026年大庆市中考各科考试大纲解读
+                            </h3>
+<span class="bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 text-[10px] px-2 py-0.5 rounded font-bold uppercase whitespace-nowrap">大纲</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                2026-03-15
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                                1,250次下载
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sd_storage</span>
+                                2.8 MB
+                            </div>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-white text-sm font-bold rounded-lg hover:bg-primary hover:text-white transition-all group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            立即下载
+                        </button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md hover:border-primary/50 transition-all duration-200 flex flex-col sm:flex-row gap-4 sm:items-center">
+<div class="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-[32px]">description</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                2025年大庆实验中学初三模拟数学试卷
+                            </h3>
+<span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 text-[10px] px-2 py-0.5 rounded font-bold uppercase whitespace-nowrap">模拟</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                2025-05-22
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                                3,892次下载
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sd_storage</span>
+                                1.5 MB
+                            </div>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-white text-sm font-bold rounded-lg hover:bg-primary hover:text-white transition-all group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            立即下载
+                        </button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md hover:border-primary/50 transition-all duration-200 flex flex-col sm:flex-row gap-4 sm:items-center">
+<div class="flex-shrink-0 w-12 h-12 bg-orange-50 dark:bg-orange-900/20 rounded-lg flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-[32px]">folder_zip</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                初三化学考前必背知识点汇总 (2025精编版)
+                            </h3>
+<span class="bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 text-[10px] px-2 py-0.5 rounded font-bold uppercase whitespace-nowrap">笔记</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                2025-04-05
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                                1,563次下载
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sd_storage</span>
+                                15.8 MB
+                            </div>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-white text-sm font-bold rounded-lg hover:bg-primary hover:text-white transition-all group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            立即下载
+                        </button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md hover:border-primary/50 transition-all duration-200 flex flex-col sm:flex-row gap-4 sm:items-center">
+<div class="flex-shrink-0 w-12 h-12 bg-red-50 dark:bg-red-900/20 rounded-lg flex items-center justify-center text-red-500">
+<span class="material-symbols-outlined text-[32px]">picture_as_pdf</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                2024年大庆市中考语文真题卷
+                            </h3>
+<span class="bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 text-[10px] px-2 py-0.5 rounded font-bold uppercase whitespace-nowrap">真题</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                2024-07-20
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                                3,102次下载
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sd_storage</span>
+                                4.1 MB
+                            </div>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-white text-sm font-bold rounded-lg hover:bg-primary hover:text-white transition-all group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            立即下载
+                        </button>
+</div>
+</div>
+<div class="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md hover:border-primary/50 transition-all duration-200 flex flex-col sm:flex-row gap-4 sm:items-center">
+<div class="flex-shrink-0 w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-[32px]">description</span>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                2025大庆铁人中学初三物理期末复习卷
+                            </h3>
+<span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 text-[10px] px-2 py-0.5 rounded font-bold uppercase whitespace-nowrap">模拟</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                2025-01-10
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                                425次下载
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sd_storage</span>
+                                0.8 MB
+                            </div>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-white text-sm font-bold rounded-lg hover:bg-primary hover:text-white transition-all group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            立即下载
+                        </button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<nav aria-label="Pagination" class="flex items-center gap-2">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-medium shadow-sm">1</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-sm font-medium">2</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-sm font-medium">3</button>
+<span class="text-slate-400 px-1">...</span>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-sm font-medium">8</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</nav>
+</div>
+<div class="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800 border border-blue-100 dark:border-slate-700 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm text-primary">
+<span class="material-symbols-outlined">help</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">找不到想要的资料？</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">如果您需要特定的试卷或笔记，可以在论坛发布求助帖。</p>
+</div>
+</div>
+<button class="text-xs font-bold text-primary hover:text-primary-hover underline decoration-2 underline-offset-2">去论坛求助</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-slate-900 text-slate-300 border-t border-slate-800 mt-auto">
+<div class="max-w-[1200px] mx-auto px-4 md:px-6 py-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+<div class="flex flex-col space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+<h2 class="text-xl font-bold tracking-tight text-white">大庆中考学习网</h2>
+</div>
+<p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+                        2026备考一站式平台，汇聚大庆优质教育资源，助力学子圆梦理想高中。
+                    </p>
+<div class="flex gap-4 mt-2">
+<a class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-slate-400" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-slate-400" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+</a>
+<a class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-slate-400" href="#">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col space-y-4">
+<h3 class="text-white font-bold text-base">快速链接</h3>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">关于我们</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">联系我们</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">免责声明</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">隐私政策</a></li>
+</ul>
+</div>
+<div class="flex flex-col space-y-4">
+<h3 class="text-white font-bold text-base">关注我们</h3>
+<div class="flex items-center gap-4">
+<div class="w-24 h-24 bg-white rounded-lg p-1">
+<div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400 text-xs text-center">
+                                二维码<br/>占位
+                            </div>
+</div>
+<div class="text-sm text-slate-400 flex flex-col gap-1">
+<p>扫描左侧二维码</p>
+<p>关注官方微信公众号</p>
+<p class="text-xs text-slate-500 mt-2">备案号：黑ICP备20260001号</p>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+<p>© 2026 Daqing Zhongkao Study Network. All rights reserved.</p>
+<div class="flex gap-4">
+<span class="hover:text-slate-400 cursor-pointer">服务条款</span>
+<span class="hover:text-slate-400 cursor-pointer">站点地图</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
