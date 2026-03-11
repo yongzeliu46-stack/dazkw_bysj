@@ -30,3 +30,10 @@ export function deleteTeacher(id) {
     method: 'delete'
   })
 }
+
+export function getTeacherById(id) {
+  return request({
+    url: `/teacher/${id}`,
+    method: 'get'
+  })
+}

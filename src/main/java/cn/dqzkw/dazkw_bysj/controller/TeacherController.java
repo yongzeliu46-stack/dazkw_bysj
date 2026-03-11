@@ -33,6 +33,15 @@ public class TeacherController {
         }
         return Result.success(teacherService.list(wrapper));
     }
+    @Operation(summary = "获取教师详情")
+    @GetMapping("/{id}")
+    public Result<Teacher> getById(@PathVariable Integer id) {
+        Teacher teacher = teacherService.getById(id);
+        if (teacher == null) {
+            return Result.error("Teacher not found");
+        }
+        return Result.success(teacher);
+    }
 
     @Operation(summary = "新增教师")
     @PostMapping("/add")

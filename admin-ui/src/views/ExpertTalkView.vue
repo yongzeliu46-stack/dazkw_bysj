@@ -133,11 +133,13 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { getCourseVideoList, getCourseVideoPlayLink } from '../api/courseVideo'
 import { getTeacherList } from '../api/teacher'
 import { getSubjectList } from '../api/subject'
 
+const route = useRoute()
 const videoList = ref([])
 const topTeachers = ref([])
 const subjects = ref([])
@@ -172,6 +174,19 @@ const handleQuery = async () => {
   }
 }
 
+const applyRouteFilters = () => {
+  const subjectId = Number(route.query.subjectId)
+  queryParams.subjectId = Number.isFinite(subjectId) && subjectId > 0 ? subjectId : undefined
+}
+
+watch(
+  () => route.query.subjectId,
+  () => {
+    applyRouteFilters()
+    handleQuery()
+  }
+)
+
 const playVideo = async (video) => {
   const res = await getCourseVideoPlayLink(video.id)
   if (res.code === 200 && res.data) {
@@ -196,6 +211,7 @@ onMounted(async () => {
     })
   }
 
+  applyRouteFilters()
   handleQuery()
 })
 </script>

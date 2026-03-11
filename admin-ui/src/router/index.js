@@ -21,6 +21,16 @@ const routes = [
         path: 'expert',
         name: 'ExpertTalk',
         component: () => import('../views/ExpertTalkView.vue')
+      },
+      {
+        path: 'news',
+        name: 'NewsCenter',
+        component: () => import('../views/NewsCenterView.vue')
+      },
+      {
+        path: 'news/:id',
+        name: 'NewsDetail',
+        component: () => import('../views/NewsDetailView.vue')
       }
     ]
   },

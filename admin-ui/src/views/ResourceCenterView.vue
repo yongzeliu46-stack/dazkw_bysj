@@ -128,10 +128,12 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { getStudyMaterialList, getStudyMaterialDownloadLink } from '../api/studyMaterial'
 import { getSubjectList } from '../api/subject'
 
+const route = useRoute()
 const materialList = ref([])
 const subjects = ref([])
 const queryParams = reactive({
@@ -172,11 +174,25 @@ const handleQuery = async () => {
   }
 }
 
+const applyRouteFilters = () => {
+  const subjectId = Number(route.query.subjectId)
+  queryParams.subjectId = Number.isFinite(subjectId) && subjectId > 0 ? subjectId : undefined
+}
+
+watch(
+  () => route.query.subjectId,
+  () => {
+    applyRouteFilters()
+    handleQuery()
+  }
+)
+
 onMounted(async () => {
   const subRes = await getSubjectList()
   if (subRes.code === 200) {
     subjects.value = subRes.data
   }
+  applyRouteFilters()
   handleQuery()
 })
 </script>

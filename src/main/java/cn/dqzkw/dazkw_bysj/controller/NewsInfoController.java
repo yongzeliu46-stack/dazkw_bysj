@@ -22,7 +22,8 @@ public class NewsInfoController {
     @GetMapping("/list")
     public Result<List<NewsInfo>> list(
             @RequestParam(required = false) Integer isImageNews,
-            @RequestParam(required = false) String tag
+            @RequestParam(required = false) String tag,
+            @RequestParam(required = false) String keyword
     ) {
         com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper<NewsInfo> wrapper = new com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper<>();
         if (isImageNews != null) {
@@ -31,8 +32,21 @@ public class NewsInfoController {
         if (tag != null && !tag.isEmpty()) {
             wrapper.like(NewsInfo::getTags, tag);
         }
+        if (keyword != null && !keyword.isEmpty()) {
+            wrapper.and(w -> w.like(NewsInfo::getTitle, keyword).or().like(NewsInfo::getContent, keyword));
+        }
         wrapper.orderByDesc(NewsInfo::getPublishTime);
         return Result.success(newsInfoService.list(wrapper));
+    }
+
+    @Operation(summary = "获取资讯详情")
+    @GetMapping("/{id}")
+    public Result<NewsInfo> getById(@PathVariable Integer id) {
+        NewsInfo newsInfo = newsInfoService.getById(id);
+        if (newsInfo == null) {
+            return Result.error("News not found");
+        }
+        return Result.success(newsInfo);
     }
 
     @Operation(summary = "新增")

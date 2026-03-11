@@ -1,1 +1,0 @@
-import{s as t}from"./request-2711f864.js";function o(e){return t({url:"/news-info/list",method:"get",params:e})}function s(e){return t({url:"/news-info/add",method:"post",data:e})}function r(e){return t({url:"/news-info/update",method:"put",data:e})}function u(e){return t({url:`/news-info/delete/${e}`,method:"delete"})}export{s as a,u as d,o as g,r as u};

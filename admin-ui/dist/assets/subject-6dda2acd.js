@@ -1,1 +1,0 @@
-import{s as e}from"./request-2711f864.js";function r(){return e({url:"/subject/list",method:"get"})}function d(t){return e({url:"/subject/add",method:"post",data:t})}function s(t){return e({url:"/subject/update",method:"put",data:t})}function c(t){return e({url:`/subject/delete/${t}`,method:"delete"})}export{d as a,c as d,r as g,s as u};

@@ -12,3 +12,7 @@ export function updateNewsInfo(data) {
 export function deleteNewsInfo(id) {
   return request({ url: `/news-info/delete/${id}`, method: 'delete' })
 }
+
+export function getNewsInfoById(id) {
+  return request({ url: `/news-info/${id}`, method: 'get' })
+}
